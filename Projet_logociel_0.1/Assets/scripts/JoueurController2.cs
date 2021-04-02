@@ -15,7 +15,7 @@ public class JoueurController2 : MonoBehaviour
     void Update()
     {
 
-        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontal1"), Input.GetAxis("MoveVertical1"), 0.0f);
+        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontalGris"), Input.GetAxis("MoveVerticalGris"), 0.0f);
 
 
         MoveCrossHairandShoot();
@@ -28,8 +28,8 @@ public class JoueurController2 : MonoBehaviour
 
     private void MoveCrossHairandShoot()
     {
-        Vector3 aim = new Vector3(Input.GetAxis("AimHorizontal1"), Input.GetAxis("AimVertical1"), 0.0f);
-        Vector2 shootingDirection = new Vector2(Input.GetAxis("AimHorizontal1"), Input.GetAxis("AimVertical1"));
+        Vector3 aim = new Vector3(Input.GetAxis("AimHorizontalGris"), Input.GetAxis("AimVerticalGris"), 0.0f);
+        Vector2 shootingDirection = new Vector2(Input.GetAxis("AimHorizontalGris"), Input.GetAxis("AimVerticalGris"));
         if (aim.magnitude > 0.0f)
         {
 
@@ -37,7 +37,7 @@ public class JoueurController2 : MonoBehaviour
             Cible.transform.localPosition = aim;
             Cible.SetActive(true);
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("FireGris"))
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 projectile projectileScript = projectile.GetComponent<projectile>();

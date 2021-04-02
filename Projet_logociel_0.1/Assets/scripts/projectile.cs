@@ -20,6 +20,7 @@ public class projectile : MonoBehaviour
                 if (other.CompareTag("petitbonhomme")){
                     GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
                     Destroy(gameObject);
+                    
                     Debug.Log(other.name);
                     break;
                 }

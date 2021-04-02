@@ -15,10 +15,10 @@ public class JoueurController1 : MonoBehaviour
     void Update()
     {
 
-        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontal"),Input.GetAxis("MoveVertical"),0.0f);
+        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontalRouge"),Input.GetAxis("MoveVerticalRouge"),0.0f);
 
-        
-        MoveCrossHairandShoot();
+        shoot(mouvement.x, mouvement.y);
+        //MoveCrossHairandShoot();
         animator.SetFloat("Horizontal", mouvement.x);
         animator.SetFloat("Vertical",mouvement.y);
         animator.SetFloat("Magnitude",mouvement.magnitude);
@@ -27,15 +27,16 @@ public class JoueurController1 : MonoBehaviour
     }
     
     private void MoveCrossHairandShoot(){
-        Vector3 aim=new Vector3(Input.GetAxis("AimHorizontal"),Input.GetAxis("AimVertical"),0.0f);
-        Vector2 shootingDirection = new Vector2(Input.GetAxis("AimHorizontal"),Input.GetAxis("AimVertical")  );
+        Vector3 aim=new Vector3(Input.GetAxis("AimHorizontalRouge"),Input.GetAxis("AimVerticalRouge"),0.0f);
+        Vector2 shootingDirection = new Vector2(Input.GetAxis("AimHorizontalRouge"),Input.GetAxis("AimVerticalRouge")  );
+        //Vector2 shootingDirection = new Vector2(rb.get)
         if (aim.magnitude>0.0f){
            
             aim*=0.8f;
             Cible.transform.localPosition=aim;
             Cible.SetActive(true);
 
-            if (Input.GetButtonDown("Fire")){
+            if (Input.GetButtonDown("FireRouge")){
                 GameObject projectile = Instantiate(projectilePrefab,transform.position, Quaternion.identity);
                 projectile projectileScript=projectile.GetComponent<projectile>();
                 projectileScript.velocity = shootingDirection;
@@ -49,6 +50,33 @@ public class JoueurController1 : MonoBehaviour
             Cible.SetActive(false);
         }
 
+    }
+
+    private void shoot(float movementX, float movementY)
+    {
+        Vector2 shootingDirection = new Vector2(movementX, movementY);
+        Vector3 aim = new Vector3(movementX,movementY, 0.0f);
+        if (aim.magnitude > 0.0f)
+        {
+
+            aim *= 0.8f;
+            Cible.transform.localPosition = aim;
+            Cible.SetActive(true);
+            if (Input.GetButtonDown("FireRouge"))
+            {
+                GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                projectile projectileScript = projectile.GetComponent<projectile>();
+                projectileScript.velocity = shootingDirection;
+                projectileScript.petitbonhomme = gameObject;
+
+                projectile.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+                Destroy(projectile, 3.0f);
+            }
+        }
+        else
+        {
+            Cible.SetActive(false);
+        }
     }
 }
 

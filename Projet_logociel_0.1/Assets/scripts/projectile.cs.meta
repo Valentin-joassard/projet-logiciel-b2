@@ -3,7 +3,8 @@ guid: c412c22dd1f70ca49bbbec8569779dff
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - petitbonhomme: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
