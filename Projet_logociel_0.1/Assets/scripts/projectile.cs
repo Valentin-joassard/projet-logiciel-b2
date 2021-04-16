@@ -7,7 +7,7 @@ public class projectile : MonoBehaviour
     public Vector2 velocity=new Vector2(0.0f,0.0f);
     public GameObject petitbonhomme;
     public Vector2 offset=new Vector2(0.0f,0.0f);
-    
+    private GameObject playerDeath = null;
 
     void Update(){
         Vector2 currentPosition = new Vector2(transform.position.x,transform.position.y);
@@ -18,9 +18,18 @@ public class projectile : MonoBehaviour
             GameObject other= hit.collider.gameObject;
             if(other!= petitbonhomme){
                 if (other.CompareTag("petitbonhomme")){
-                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
+                    
+
+                    name = other.name;
+                    GameObject.Find(name).GetComponent<VieScore>().GererVie(other);
+                    
+                    playerDeath=GameObject.Find("Gamelogic").GetComponent<GameLogic>().VerifVie();
+                    
+                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other,playerDeath);
                     Destroy(gameObject);
-                    Debug.Log(other.name);
+              
+                    
+                    
                     break;
                 }
                 if (other.CompareTag("wall")){

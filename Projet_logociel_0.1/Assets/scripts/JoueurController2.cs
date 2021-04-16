@@ -8,7 +8,6 @@ public class JoueurController2 : MonoBehaviour
 {
     public int joueurId = 1;
     public Animator animator;
-
     public GameObject Cible;
     public GameObject projectilePrefab;
     public Rigidbody2D rb;
@@ -54,5 +53,6 @@ public class JoueurController2 : MonoBehaviour
         }
 
     }
+    
 }
 
