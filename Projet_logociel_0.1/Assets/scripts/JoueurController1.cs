@@ -8,7 +8,6 @@ public class JoueurController1 : MonoBehaviour
 {
     public int joueurId=0;
     public Animator animator;
-    
     public GameObject Cible;
     public GameObject projectilePrefab;
     public Rigidbody2D rb;

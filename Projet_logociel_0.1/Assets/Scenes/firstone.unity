@@ -3291,6 +3291,7 @@ GameObject:
   - component: {fileID: 1577643656}
   - component: {fileID: 1577643655}
   - component: {fileID: 1577643654}
+  - component: {fileID: 1577643659}
   m_Layer: 0
   m_Name: rouge
   m_TagString: petitbonhomme
@@ -3383,6 +3384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joueurId: 0
   animator: {fileID: 1577643654}
+  Vie: 3
   Cible: {fileID: 1775373733}
   projectilePrefab: {fileID: 2004000797559437393, guid: ae23c6f47e944c546877f54d0772c3af,
     type: 3}
@@ -3438,6 +3440,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1577643659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577643652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc52060aa0293c74ba7ff600c70f374c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vie: 3
 --- !u!1 &1585368734
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,6 +3467,7 @@ GameObject:
   - component: {fileID: 1585368739}
   - component: {fileID: 1585368740}
   - component: {fileID: 1585368736}
+  - component: {fileID: 1585368741}
   m_Layer: 0
   m_Name: gris
   m_TagString: petitbonhomme
@@ -3599,6 +3615,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1585368741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585368734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc52060aa0293c74ba7ff600c70f374c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vie: 3
 --- !u!1 &1640630539
 GameObject:
   m_ObjectHideFlags: 0

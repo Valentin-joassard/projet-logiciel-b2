@@ -7,43 +7,77 @@ public class GameLogic : MonoBehaviour
     
     public GameObject[] pointspawn;
     public GameObject[] petitjoueurs;
-
-    public void Spawn(GameObject petitbonhomme)
+    public int Vie;
+    public void Spawn(GameObject petitbonhomme, GameObject playerDeath)
     {
-        GameObject pointpawn = GetChoixSpawn();
+        
+        GameObject pointpawn = GetChoixSpawn(playerDeath);
         petitbonhomme.transform.position = pointpawn.transform.position;
+        
     }
     GameObject GetRandompointspawn()
     {
         return pointspawn[Random.Range(0, pointspawn.Length)];
     }
-    GameObject GetChoixSpawn()
+    public GameObject VerifVie()
     {
-        float[] minSqrDistances = new float[pointspawn.Length];
-        for (int i=0; i < pointspawn.Length; i++)
+        
+        
+        foreach (GameObject i in GameObject.FindGameObjectsWithTag("petitbonhomme"))
+
         {
-            float min = Mathf.Infinity;
-            for (int j = 0; j < petitjoueurs.Length; j++)
+             
+            Debug.Log(i.name);
+            Vie = GameObject.Find(i.name).GetComponent<VieScore>().GetVie(i);
+
+            Debug.Log(Vie);
+            if (Vie <= 0)
             {
-               float sqrDistance = (petitjoueurs[j].transform.position - pointspawn[i].transform.position).sqrMagnitude;
-                if (sqrDistance < min)
-                {
-                    min = sqrDistance;
-                }
-                minSqrDistances[i] = min;
+               
+                return i;
+
             }
-  
+            
         }
-        float max =minSqrDistances[0];
-        int maxIndex=0;
-        for(int i=1; i<minSqrDistances.Length; i++)
-        {
-            if (max < minSqrDistances[i])
-            {
-                max = minSqrDistances[i];
-                maxIndex = i;
-            }
-        }
-        return pointspawn[maxIndex];
+        return null ;
     }
+
+    GameObject GetChoixSpawn(GameObject playerDeath)
+    {
+        Debug.Log(playerDeath);
+        if (playerDeath != null)
+        {
+
+
+            float[] minSqrDistances = new float[pointspawn.Length];
+            for (int i = 0; i < pointspawn.Length; i++)
+            {
+                float min = Mathf.Infinity;
+                for (int j = 0; j < petitjoueurs.Length; j++)
+                {
+                    float sqrDistance = (petitjoueurs[j].transform.position - pointspawn[i].transform.position).sqrMagnitude;
+                    if (sqrDistance < min)
+                    {
+                        min = sqrDistance;
+                    }
+                    minSqrDistances[i] = min;
+                }
+
+            }
+            float max = minSqrDistances[0];
+            int maxIndex = 0;
+            for (int i = 1; i < minSqrDistances.Length; i++)
+            {
+                if (max < minSqrDistances[i])
+                {
+                    max = minSqrDistances[i];
+                    maxIndex = i;
+                }
+            }
+            return pointspawn[maxIndex];
+
+        }
+        return null;
+    }
+    
 }
