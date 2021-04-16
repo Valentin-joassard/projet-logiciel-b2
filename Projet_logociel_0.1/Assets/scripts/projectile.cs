@@ -24,11 +24,17 @@ public class projectile : MonoBehaviour
                     GameObject.Find(name).GetComponent<VieScore>().GererVie(other);
                     
                     playerDeath=GameObject.Find("Gamelogic").GetComponent<GameLogic>().VerifVie();
-                    
-                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
-                    Destroy(gameObject);
-                    
-                    Debug.Log(other.name);
+                    if(playerDeath != null)
+                    {
+                        Debug.Log("Défaite de : "+ playerDeath.name);
+                        Destroy(other);
+                    }
+                    else
+                    {
+                        GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
+                        Destroy(gameObject);
+                        Debug.Log(other.name);
+                    }
                     break;
                 }
                 if (other.CompareTag("wall")){

@@ -76,5 +76,14 @@ public class GameLogic : MonoBehaviour
         }
         return null;
     }
+
+    public int UpdateStreak(GameObject joueur)
+    {
+        if(joueur.name == "rouge")
+        {
+            int streak = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().streak;
+        }
+        return 0;
+    }
     
 }

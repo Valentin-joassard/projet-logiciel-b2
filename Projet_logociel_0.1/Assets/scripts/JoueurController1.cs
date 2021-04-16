@@ -11,6 +11,7 @@ public class JoueurController1 : MonoBehaviour
     public GameObject Cible;
     public GameObject projectilePrefab;
     public Rigidbody2D rb;
+    public int streak = 0;
     void Update()
     {
 
@@ -76,6 +77,10 @@ public class JoueurController1 : MonoBehaviour
         {
             Cible.SetActive(false);
         }
+    }
+    public int getStreak()
+    {
+        return streak;
     }
 }
 
