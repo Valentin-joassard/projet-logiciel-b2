@@ -7,6 +7,7 @@ public class VieScore : MonoBehaviour
     public int vie;
     public void GererVie(GameObject petitbonhomme)
     {
+
         vie = vie - 1;
 
     }
