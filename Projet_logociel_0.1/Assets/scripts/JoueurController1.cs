@@ -65,7 +65,7 @@ public class JoueurController1 : MonoBehaviour
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 projectile projectileScript = projectile.GetComponent<projectile>();
-                projectileScript.velocity = shootingDirection;
+                projectileScript.velocity = shootingDirection * 3.0f;
                 projectileScript.petitbonhomme = gameObject;
 
                 projectile.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);

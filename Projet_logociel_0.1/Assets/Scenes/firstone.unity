@@ -1356,6 +1356,7 @@ MonoBehaviour:
   petitjoueurs:
   - {fileID: 1577643652}
   - {fileID: 1585368734}
+  Vie: 0
 --- !u!212 &438760288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3384,7 +3385,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joueurId: 0
   animator: {fileID: 1577643654}
-  Vie: 3
   Cible: {fileID: 1775373733}
   projectilePrefab: {fileID: 2004000797559437393, guid: ae23c6f47e944c546877f54d0772c3af,
     type: 3}
@@ -3463,10 +3463,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1585368738}
   - component: {fileID: 1585368737}
+  - component: {fileID: 1585368736}
   - component: {fileID: 1585368735}
   - component: {fileID: 1585368739}
   - component: {fileID: 1585368740}
-  - component: {fileID: 1585368736}
   - component: {fileID: 1585368741}
   m_Layer: 0
   m_Name: gris

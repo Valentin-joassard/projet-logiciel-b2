@@ -25,7 +25,7 @@ public class projectile : MonoBehaviour
                     
                     playerDeath=GameObject.Find("Gamelogic").GetComponent<GameLogic>().VerifVie();
                     
-                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other,playerDeath);
+                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
                     Destroy(gameObject);
                     
                     Debug.Log(other.name);

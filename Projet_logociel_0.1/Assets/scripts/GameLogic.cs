@@ -8,10 +8,10 @@ public class GameLogic : MonoBehaviour
     public GameObject[] pointspawn;
     public GameObject[] petitjoueurs;
     public int Vie;
-    public void Spawn(GameObject petitbonhomme, GameObject playerDeath)
+    public void Spawn(GameObject petitbonhomme)
     {
         
-        GameObject pointpawn = GetChoixSpawn(playerDeath);
+        GameObject pointpawn = GetChoixSpawn(petitbonhomme);
         petitbonhomme.transform.position = pointpawn.transform.position;
         
     }
@@ -21,10 +21,7 @@ public class GameLogic : MonoBehaviour
     }
     public GameObject VerifVie()
     {
-        
-        
         foreach (GameObject i in GameObject.FindGameObjectsWithTag("petitbonhomme"))
-
         {
              
             Debug.Log(i.name);
@@ -33,7 +30,7 @@ public class GameLogic : MonoBehaviour
             Debug.Log(Vie);
             if (Vie <= 0)
             {
-               
+                Debug.Log("mort");
                 return i;
 
             }
