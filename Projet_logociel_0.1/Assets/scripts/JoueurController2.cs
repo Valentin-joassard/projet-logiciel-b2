@@ -12,6 +12,7 @@ public class JoueurController2 : MonoBehaviour
     public GameObject projectilePrefab;
     public Rigidbody2D rb;
     public int streak = 0;
+    public int score = 0;
     void Update()
     {
 

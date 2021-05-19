@@ -21,6 +21,21 @@ public class projectile : MonoBehaviour
                     
 
                     name = other.name;
+                    GameObject killer = GameObject.Find("Gamelogic").GetComponent<GameLogic>().GetKiller(other);
+                    Debug.Log(killer);
+
+
+                    //UpdateStreak(killer);
+                    //UpdateScore(killer);
+
+
+                    //faut gerer streakUp du killer
+                    GameObject.Find(killer.name).GetComponent<StreakScore>().GererStreakUp(killer);
+                    //faut gerer streakReset du other
+                    GameObject.Find(other.name).GetComponent<StreakScore>().GererStreakReset(other);
+                    //gerer le score du killer
+                    GameObject.Find(killer.name).GetComponent<StreakScore>().ScoreUp(killer);
+
                     GameObject.Find(name).GetComponent<VieScore>().GererVie(other);
                     
                     playerDeath=GameObject.Find("Gamelogic").GetComponent<GameLogic>().VerifVie();
@@ -33,7 +48,7 @@ public class projectile : MonoBehaviour
                     {
                         GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
                         Destroy(gameObject);
-                        Debug.Log(other.name);
+                        //Debug.Log(other.name);
                     }
                     break;
                 }
@@ -46,5 +61,41 @@ public class projectile : MonoBehaviour
             
         }
         transform.position=newPosition;
+    }
+
+    public void UpdateStreak(GameObject joueur)
+    {
+        if (joueur.name == "rouge")
+        {
+            int streakRouge = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().streak;
+            streakRouge += 1;
+            int streakGris = GameObject.Find("JoueurController2").GetComponent<JoueurController2>().streak;
+            streakGris = 0;
+        }
+        if (joueur.name == "gris")
+        {
+            int streakGris = GameObject.Find("JoueurController2").GetComponent<JoueurController2>().streak;
+            streakGris += 1;
+            int streakRouge = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().streak;
+            streakRouge = 0;
+        }
+    }
+
+    public void UpdateScore(GameObject joueur)
+    {
+        int streakRouge = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().streak;
+        int scoreRouge = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().score;
+        int streakGris = GameObject.Find("JoueurController2").GetComponent<JoueurController2>().streak;
+        int scoreGris = GameObject.Find("JoueurController2").GetComponent<JoueurController2>().score;
+        if (streakRouge > 0)
+        {
+            scoreRouge += 50 * streakRouge;
+            //Debug.Log(scoreRouge);
+        }
+        if (streakGris > 0)
+        {
+            scoreGris += 50 * streakGris;
+        }
+
     }
 }

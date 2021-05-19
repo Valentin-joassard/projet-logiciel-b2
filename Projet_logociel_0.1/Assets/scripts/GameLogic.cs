@@ -24,7 +24,7 @@ public class GameLogic : MonoBehaviour
         foreach (GameObject i in GameObject.FindGameObjectsWithTag("petitbonhomme"))
         {
              
-            Debug.Log(i.name);
+            //Debug.Log(i.name);
             Vie = GameObject.Find(i.name).GetComponent<VieScore>().GetVie(i);
 
             Debug.Log(Vie);
@@ -41,7 +41,7 @@ public class GameLogic : MonoBehaviour
 
     GameObject GetChoixSpawn(GameObject playerDeath)
     {
-        Debug.Log(playerDeath);
+        //Debug.Log(playerDeath);
         if (playerDeath != null)
         {
 
@@ -77,13 +77,20 @@ public class GameLogic : MonoBehaviour
         return null;
     }
 
-    public int UpdateStreak(GameObject joueur)
+    public GameObject GetKiller(GameObject joueur)
     {
         if(joueur.name == "rouge")
         {
-            int streak = GameObject.Find("JoueurController1").GetComponent<JoueurController1>().streak;
+            GameObject killer = GameObject.Find("gris");
+            return killer;
         }
-        return 0;
+        else
+        {
+            GameObject killer = GameObject.Find("rouge");
+            return killer;
+        }
     }
+
+    
     
 }
