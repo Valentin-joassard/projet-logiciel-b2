@@ -79,9 +79,5 @@ public class JoueurController1 : MonoBehaviour
             Cible.SetActive(false);
         }
     }
-    public int getStreak()
-    {
-        return streak;
-    }
 }
 
