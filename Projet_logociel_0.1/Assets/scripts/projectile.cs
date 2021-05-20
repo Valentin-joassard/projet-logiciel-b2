@@ -21,14 +21,32 @@ public class projectile : MonoBehaviour
                     
 
                     name = other.name;
+                    GameObject killer = GameObject.Find("Gamelogic").GetComponent<GameLogic>().GetKiller(other);
+                    Debug.Log(killer);
+
+
+                    //faut gerer streakUp du killer
+                    GameObject.Find(killer.name).GetComponent<StreakScore>().GererStreakUp(killer);
+                    //faut gerer streakReset du other
+                    GameObject.Find(other.name).GetComponent<StreakScore>().GererStreakReset(other);
+                    //gerer le score du killer
+                    GameObject.Find(killer.name).GetComponent<StreakScore>().ScoreUp(killer);
+
                     GameObject.Find(name).GetComponent<VieScore>().GererVie(other);
                     
                     playerDeath=GameObject.Find("Gamelogic").GetComponent<GameLogic>().VerifVie();
-                    
-                    GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other,playerDeath);
-                    Destroy(gameObject);
-                    
-                    Debug.Log(other.name);
+                    if(playerDeath != null)
+                    {
+                        Debug.Log("Défaite de : "+ playerDeath.name);
+                        Destroy(other);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
+                        Destroy(gameObject);
+                        //Debug.Log(other.name);
+                    }
                     break;
                 }
                 if (other.CompareTag("wall")){

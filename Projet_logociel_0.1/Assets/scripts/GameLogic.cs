@@ -8,10 +8,10 @@ public class GameLogic : MonoBehaviour
     public GameObject[] pointspawn;
     public GameObject[] petitjoueurs;
     public int Vie;
-    public void Spawn(GameObject petitbonhomme, GameObject playerDeath)
+    public void Spawn(GameObject petitbonhomme)
     {
         
-        GameObject pointpawn = GetChoixSpawn(playerDeath);
+        GameObject pointpawn = GetChoixSpawn(petitbonhomme);
         petitbonhomme.transform.position = pointpawn.transform.position;
         
     }
@@ -21,19 +21,16 @@ public class GameLogic : MonoBehaviour
     }
     public GameObject VerifVie()
     {
-        
-        
         foreach (GameObject i in GameObject.FindGameObjectsWithTag("petitbonhomme"))
-
         {
              
-            Debug.Log(i.name);
+            //Debug.Log(i.name);
             Vie = GameObject.Find(i.name).GetComponent<VieScore>().GetVie(i);
 
             Debug.Log(Vie);
             if (Vie <= 0)
             {
-               
+                Debug.Log("mort");
                 return i;
 
             }
@@ -44,7 +41,7 @@ public class GameLogic : MonoBehaviour
 
     GameObject GetChoixSpawn(GameObject playerDeath)
     {
-        Debug.Log(playerDeath);
+        //Debug.Log(playerDeath);
         if (playerDeath != null)
         {
 
@@ -79,5 +76,21 @@ public class GameLogic : MonoBehaviour
         }
         return null;
     }
+
+    public GameObject GetKiller(GameObject joueur)
+    {
+        if(joueur.name == "rouge")
+        {
+            GameObject killer = GameObject.Find("gris");
+            return killer;
+        }
+        else
+        {
+            GameObject killer = GameObject.Find("rouge");
+            return killer;
+        }
+    }
+
+    
     
 }
