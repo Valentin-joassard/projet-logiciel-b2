@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
     
@@ -31,6 +31,7 @@ public class GameLogic : MonoBehaviour
             if (Vie <= 0)
             {
                 Debug.Log("mort");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 return i;
 
             }

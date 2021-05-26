@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/firstone.unity
     guid: 2bd8aea9ee0745d4e8e6a1333ff03da5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 186e9ac909acbd0499f2c8dbff33298e
   m_configObjects: {}
