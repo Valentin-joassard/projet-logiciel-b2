@@ -1449,6 +1449,7 @@ GameObject:
   - component: {fileID: 438760286}
   - component: {fileID: 438760288}
   - component: {fileID: 438760287}
+  - component: {fileID: 438760289}
   m_Layer: 0
   m_Name: Gamelogic
   m_TagString: Untagged
@@ -1491,6 +1492,7 @@ MonoBehaviour:
   - {fileID: 1577643652}
   - {fileID: 1585368734}
   Vie: 0
+  winner: {fileID: 0}
 --- !u!212 &438760288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1541,6 +1543,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &438760289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438760285}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7170186a05fba704c95b954129413c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494471291
 GameObject:
   m_ObjectHideFlags: 0

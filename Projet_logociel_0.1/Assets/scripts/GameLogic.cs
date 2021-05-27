@@ -8,6 +8,7 @@ public class GameLogic : MonoBehaviour
     public GameObject[] pointspawn;
     public GameObject[] petitjoueurs;
     public int Vie;
+    public GameObject winner = null;
     public void Spawn(GameObject petitbonhomme)
     {
         
@@ -24,10 +25,8 @@ public class GameLogic : MonoBehaviour
         foreach (GameObject i in GameObject.FindGameObjectsWithTag("petitbonhomme"))
         {
              
-            //Debug.Log(i.name);
             Vie = GameObject.Find(i.name).GetComponent<VieScore>().GetVie(i);
 
-            Debug.Log(Vie);
             if (Vie <= 0)
             {
                 Debug.Log("mort");
@@ -91,6 +90,18 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    
-    
+    public void GetWinner(GameObject joueur)
+    {
+        if (joueur.name == "rouge")
+        {
+            winner = GameObject.Find("gris");
+        }
+        else
+        {
+            winner = GameObject.Find("rouge");
+        }
+    }
+
+
+
 }

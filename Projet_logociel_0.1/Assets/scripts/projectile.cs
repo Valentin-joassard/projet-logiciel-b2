@@ -22,7 +22,6 @@ public class projectile : MonoBehaviour
 
                     name = other.name;
                     GameObject killer = GameObject.Find("Gamelogic").GetComponent<GameLogic>().GetKiller(other);
-                    Debug.Log(killer);
 
 
                     //faut gerer streakUp du killer
@@ -40,12 +39,13 @@ public class projectile : MonoBehaviour
                         Debug.Log("Défaite de : "+ playerDeath.name);
                         Destroy(other);
                         Destroy(gameObject);
+                        GameObject.Find("Gamelogic").GetComponent<GameLogic>().GetWinner(playerDeath);
+                        GameObject.Find("Gamelogic").GetComponent<postScore>().enabled = true;
                     }
                     else
                     {
                         GameObject.Find("Gamelogic").GetComponent<GameLogic>().Spawn(other);
                         Destroy(gameObject);
-                        //Debug.Log(other.name);
                     }
                     break;
                 }

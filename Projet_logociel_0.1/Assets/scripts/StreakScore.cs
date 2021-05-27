@@ -30,7 +30,7 @@ public class StreakScore : MonoBehaviour
         Debug.Log(score + joueur.name);
     }
 
-    public int GetScore(GameObject joueur)
+    public int GetScore()
     {
         return score;
     }
