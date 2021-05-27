@@ -26,14 +26,15 @@ public class JoueurController1 : MonoBehaviour
     public Rigidbody2D rb;
     public int streak = 0;
     public int score = 0;
-    private MqttClient client;
+    private MqttClient client = new MqttClient(IPAddress.Parse("51.158.79.224"), 1883, false, null);
     private string message;
-    private static Jsonmessage jsoncommande;
+    public static Jsonmessage jsoncommand;
+    private ushort test;
 
     void Start()
     {
         // create client instance 
-        client = new MqttClient(IPAddress.Parse("51.158.79.224"), 1883, false, null);
+        
 
         // register to message received 
         client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
@@ -43,7 +44,8 @@ public class JoueurController1 : MonoBehaviour
         string clientId = Guid.NewGuid().ToString();
         client.Connect(clientId);
 
-        client.Subscribe(new string[] { "maxence/command" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
+        test = client.Subscribe(new string[] { "maxence/command" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
+        Debug.Log(test);
     }
 
     void client_MqttMsgPublishReceived(object sender,MqttMsgPublishEventArgs e)
@@ -54,10 +56,11 @@ public class JoueurController1 : MonoBehaviour
         //Debug.Log(message);
         Jsonmessage jsoncommand = JsonUtility.FromJson<Jsonmessage>(message);
 
-        Debug.Log("player" + jsoncommand.player);
-        Debug.Log("stick" + jsoncommand.stick);
-        Debug.Log("button" + jsoncommand.button);
-        Debug.Log("evenement" + jsoncommand.evenenement);
+        //Debug.Log("player" + jsoncommand.player);
+        //Debug.Log("stick" + jsoncommand.stick);
+        //Debug.Log("button" + jsoncommand.button);
+        //Debug.Log("evenement" + jsoncommand.evenenement);
+        
 
 
     }
@@ -66,8 +69,10 @@ public class JoueurController1 : MonoBehaviour
 
     void Update()
     {
-
-        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontalRouge"),Input.GetAxis("MoveVerticalRouge"),0.0f);
+        //message = client.WillMessage;
+        //Debug.Log(jsoncommand.player);
+        //Debug.Log(message);
+        Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontalRouge"), Input.GetAxis("MoveVerticalRouge"), 0.0f);
         //Vector3 mouvement = Move(jsoncommand.stick);
 
         shoot(mouvement.x, mouvement.y);
