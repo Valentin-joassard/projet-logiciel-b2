@@ -17,7 +17,6 @@ public class JoueurController1 : MonoBehaviour
     {
 
         Vector3 mouvement = new Vector3(Input.GetAxis("MoveHorizontalRouge"),Input.GetAxis("MoveVerticalRouge"),0.0f);
-
         shoot(mouvement.x, mouvement.y);
         //MoveCrossHairandShoot();
         animator.SetFloat("Horizontal", mouvement.x);
@@ -25,6 +24,7 @@ public class JoueurController1 : MonoBehaviour
         animator.SetFloat("Magnitude",mouvement.magnitude);
         
         rb.velocity=new Vector2(mouvement.x,mouvement.y );
+        
     }
     
     private void MoveCrossHairandShoot(){
