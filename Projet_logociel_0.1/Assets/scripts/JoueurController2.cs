@@ -60,7 +60,8 @@ public class JoueurController2 : MonoBehaviour
         Vector2 shootingDirection = new Vector2(movementX, movementY);
         Vector3 aim = new Vector3(movementX, movementY, 0.0f);
         //Vector3 aim = new Vector3(1.0f,0.0f, 0.0f) ;
-        float bulletSpeed = GameObject.Find("rouge").GetComponent<BonusMalusBulletSpeed>().speed;
+        float bulletSpeed = GameObject.Find("gris").GetComponent<BonusMalusBulletSpeed>().speed;
+
         if (aim.magnitude > 0.0f)
         {
 
